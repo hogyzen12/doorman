@@ -69,7 +69,9 @@ Here's the full list of steps to set up a candy machine + doorman on devnet.
   - make sure you've checked Anchor.toml so that you're using the appropriate cluster + authority/keypair you used when setting up the candy machine
   - set the REACT_APP_DOORMAN_TREASURY in .env to the wallet that will contain the SOL when whitelisted users purchase their mint token
 - now initialize doorman: ```anchor run initialize```
-  - save the config account to use and enter it into .env as REACT_APP_DOORMAN_CONFIG
+- Add and remove the addresses that you want from your local file running ```anchor run add-multi-addresses``` and to remove use ```anchor run remove-addresses```
+- addresses to be written or removed and thir format can be seen from the local files in the rrot directory, names addys.txt and del_addys.txt
+- save the config account to use and enter it into .env as REACT_APP_DOORMAN_CONFIG
 - if you want, you can update doorman's config: ```anchor run update-config```
 - set WHITELIST_ADDRESS in .env to your test whitelist address and add it to the whitelist: ```anchor run add-address```
 - update config.js to use devnet
@@ -78,10 +80,8 @@ Here's the full list of steps to set up a candy machine + doorman on devnet.
 
 ### TODO
 This still needs a ton of work. Here's a very incomplete list of things that I need to add. PRs super welcome:
-- add multiple addresses at the same time
 - current whitelist size is limited to around 300 atm. this is due to account size limitations when constructing
   an account the way I'm doing it with Anchor (10k)
-- address removal
 - add a button to perform the purchase + mint in a single transaction  
 - a working sample app with candy machine integration
 - easier mint token account creation for the payer ..?
